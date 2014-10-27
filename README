@@ -1,4 +1,4 @@
-Locale::Utils::Autotranslator version 0.001
+Locale::Utils::Autotranslator version 0.002
 ============================================
 
 Utils to expand placeholders in named style.
@@ -22,7 +22,7 @@ This module requires these other modules and libraries:
     HTTP::Request::Common
     JSON
     List::MoreUtils
-    Locale::TextDomain::OO
+    Locale::TextDomain::OO::Util
     Locale::PO
     LWP::UserAgent
     Moo

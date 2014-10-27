@@ -31,10 +31,12 @@ my $obj = __PACKAGE__
     )
     ->translate(
         't/LocaleData/untranslated de_utf-8.po',
-        't/LocaleData/translated de_utf-8.po',
+        './translated de_utf-8.po',
     );
 
-my $content = path('t/LocaleData/translated de_utf-8.po')->slurp_utf8;
+my $filename = './translated de_utf-8.po';
+my $content = path($filename)->slurp_utf8;
+unlink $filename;
 $content =~ s{\r}{}xmsg;
 
 eq_or_diff
@@ -62,10 +64,7 @@ msgstr "Anzahl {post items}: {count :num}"
 
 #. translated by: api.mymemory.translated.net
 msgid "Please write %1 %*(%2,postcard,postcards) today."
-msgstr ""
-"Bitte schreiben Sie %1 %*(%2,Dear Peter,\\n"
-"\\n"
-"I am writing you from Mallorca. Mallorca is one beautifull island.,Postkarten) heute."
+msgstr "Bitte schreiben Sie %1 %*(%2,Postkarte,Postkarten) heute."
 
 # comment2
 # comment1
@@ -94,7 +93,7 @@ eq_or_diff
         'en: Number of XXPOSTYXITEMSXZ: 1',
         'de: Anzahl XXPOSTYXITEMSXZ: 1',
         'en: postcard',
-        "de: Dear Peter,\n\nI am writing you from Mallorca. Mallorca is one beautifull island.",
+        'de: Postkarte',
         'en: postcards',
         'de: Postkarten',
         'en: Please write XXXDBXZ XXXCKXDCXZ today.',

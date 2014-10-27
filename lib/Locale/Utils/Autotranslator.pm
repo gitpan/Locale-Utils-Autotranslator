@@ -6,6 +6,7 @@ use Carp qw(confess);
 use Encode qw(decode find_encoding);
 use List::MoreUtils qw(uniq);
 use Locale::PO;
+use Locale::TextDomain::OO::Util::ExtractHeader;
 use Moo;
 use MooX::StrictConstructor;
 use MooX::Types::MooseLike::Base qw(CodeRef Str);
@@ -13,14 +14,7 @@ use MooX::Types::MooseLike::Numeric qw(PositiveInt PositiveOrZeroInt);
 use Try::Tiny;
 use namespace::autoclean;
 
-our $VERSION = '0.001';
-
-BEGIN {
-    with qw(
-        Locale::TextDomain::OO::Lexicon::Role::Constants
-        Locale::TextDomain::OO::Lexicon::Role::ExtractHeader
-    );
-}
+our $VERSION = '0.002';
 
 # a .. w, z     => A-WZ
 # A .. W, Z     => Ym
@@ -234,12 +228,14 @@ sub translate { ## no critic (ExcessComplexity)
     my $pos_ref = Locale::PO->load_file_asarray($name_read)
         or confess "$name_read is not a valid po/pot file";
 
-    my $header = $self->extract_header_msgstr(
-        Locale::PO->dequote(
-            $pos_ref->[0]->msgstr
-                || confess "No header found in file $name_read",
-        ),
-    );
+    my $header = Locale::TextDomain::OO::Util::ExtractHeader
+        ->instance
+        ->extract_header_msgstr(
+            Locale::PO->dequote(
+                $pos_ref->[0]->msgstr
+                    || confess "No header found in file $name_read",
+            ),
+        );
     my $charset     = $header->{charset};
     my $encode_obj  = find_encoding($charset);
     my $nplurals    = $header->{nplurals};
@@ -558,13 +554,13 @@ __END__
 
 Locale::Utils::Autotranslator - Base class to translate automaticly
 
-$Id: $
+$Id: Autotranslator.pm 534 2014-10-27 06:46:01Z steffenw $
 
 $HeadURL: $
 
 =head1 VERSION
 
-0.001
+0.002
 
 =head1 SYNOPSIS
 
@@ -694,6 +690,8 @@ L<List::MoreUtils|List::MoreUtils>
 
 L<Locale::PO|Locale::PO>
 
+L<Locale::TextDomain::OO::Util::ExtractHeader|Locale::TextDomain::OO::Util::ExtractHeader>
+
 L<Moo|Moo>
 
 L<MooX::StrictConstructor|MooX::StrictConstructor>
@@ -705,10 +703,6 @@ L<MooX::Types::MooseLike::Numeric|MooX::Types::MooseLike::Numeric>
 L<Try::Tiny|Try::Tiny>
 
 L<namespace::autoclean|namespace::autoclean>
-
-L<Locale::TextDomain::OO::Lexicon::Role::Constants|Locale::TextDomain::OO::Lexicon::Role::Constants>
-
-L<Locale::TextDomain::OO::Lexicon::Role::ExtractHeader|Locale::TextDomain::OO::Lexicon::Role::ExtractHeader>
 
 =head1 INCOMPATIBILITIES
 

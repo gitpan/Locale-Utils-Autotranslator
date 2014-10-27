@@ -33,10 +33,12 @@ my $obj = __PACKAGE__
     )
     ->translate(
         't/LocaleData/untranslated de_utf-8.po',
-        't/LocaleData/translated de_utf-8.po',
+        './translated de_utf-8.po',
     );
 
-my $content = path('t/LocaleData/translated de_utf-8.po')->slurp_utf8;
+my $filename = './translated de_utf-8.po';
+my $content = path($filename)->slurp_utf8;
+unlink $filename;
 $content =~ s{\r}{}xmsg;
 
 eq_or_diff

@@ -14,7 +14,7 @@ WriteMakefile
                    'LWP::UserAgent' => 0,
                    'List::MoreUtils' => 0,
                    'Locale::PO' => '0.24',
-                   'Locale::TextDomain::OO' => '1.010',
+                   'Locale::TextDomain::OO::Util' => 0,
                    'Moo' => '1.003001',
                    'MooX::StrictConstructor' => 0,
                    'MooX::Types::MooseLike' => 0,

@@ -60,11 +60,13 @@ my $obj = MyTranslator
         'LocaleData/translated de_utf-8.po',
     );
 
-my $content = path('LocaleData/translated de_utf-8.po')->slurp_utf8;
+my $filename = 'LocaleData/translated de_utf-8.po';
+my $content = path($filename)->slurp_utf8;
+unlink $filename;
 $content =~ s{\r}{}xmsg;
 () = print "\n", $content;
 
-# $Id: $
+# $Id: 01_my_translator_utf-8.pl 525 2014-10-16 05:57:34Z steffenw $
 
 __END__
 
