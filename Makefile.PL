@@ -19,6 +19,7 @@ WriteMakefile
                    'MooX::StrictConstructor' => 0,
                    'MooX::Types::MooseLike' => 0,
                    'MooX::Types::MooseLike::Numeric' => 0,
+                   'Path::Tiny' => 0,
                    'Test::Differences' => '0.60',
                    'Test::Exception' => 0,
                    'Test::More' => 0,

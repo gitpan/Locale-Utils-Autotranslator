@@ -14,7 +14,7 @@ use MooX::Types::MooseLike::Numeric qw(PositiveInt PositiveOrZeroInt);
 use Try::Tiny;
 use namespace::autoclean;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 # a .. w, z     => A-WZ
 # A .. W, Z     => Ym
@@ -560,7 +560,7 @@ $HeadURL: $
 
 =head1 VERSION
 
-0.002
+0.003
 
 =head1 SYNOPSIS
 

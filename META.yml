@@ -3,6 +3,7 @@ abstract: 'Locale::Utils::Autotranslator - Interface for machine translation'
 author:
   - 'Steffen Winkler <steffenw at cpan.org>'
 build_requires:
+  Path::Tiny: '0'
   Test::Differences: '0.60'
   Test::Exception: '0'
   Test::More: '0'
@@ -19,7 +20,7 @@ name: Locale-Utils-Autotranslator
 provides:
   Locale::Utils::Autotranslator:
     file: lib/Locale/Utils/Autotranslator.pm
-    version: '0.002'
+    version: '0.003'
   Locale::Utils::Autotranslator::ApiMymemoryTranslatedNet:
     file: lib/Locale/Utils/Autotranslator/ApiMymemoryTranslatedNet.pm
     version: '0.001'
@@ -46,4 +47,4 @@ requires:
   perl: '5.008'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.002'
+version: '0.003'

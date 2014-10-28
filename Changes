@@ -1,5 +1,8 @@
 Revision history for Perl extension Locale::Utils::Autotranslator.
 
+0.003  Tue Oct 28 06:49:37 2014
+- added Path::Tiny to test dependencies
+
 0.002  Mon Oct 27 07:42:50 2014
 - using the new  Locale::TextDomain::OO::Util module
 
